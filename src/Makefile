@@ -1,7 +1,11 @@
 CC=gcc
 
 objs=rc4.o
-tests=rc4.test.c
+tests=rc4.test.o
 
-run_test: $(objs) $(tests) run_test.c
-	$(CC) $(CFLAGS) run_test.c -o run_test $(objs)
+tests: $(objs) $(tests) tests.c
+	$(CC) $(CFLAGS) -g tests.c -o tests $(objs) $(tests)
+
+clean:
+	rm -rf $(objs) $(tests) tests
+
